@@ -13,6 +13,12 @@ for x in lines:
     for i in range(int(h)):
         for j in range(int(w)):
             cloth_dict[x_init+i, y_init+j] += 1
+            data[x_init+i, y_init+j].append(list_x[0])
 
+# Part 1
 print len([val for val in cloth_dict.values() if val >= 2])
+# Part 2
+lists_of_ids = set([item for sublist in [val for val in data.values() if len(val) > 1] for item in sublist])
+int_list_of_ids = [int(l.replace('#','')) for l in lists_of_ids]
+print list(set(list(range(1,1311))).difference(list(int_list_of_ids)))
 	
